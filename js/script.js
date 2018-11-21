@@ -113,7 +113,7 @@ function checkValidEmail(email) {
   return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);
 }
 function checkActivities (checked) {
-  return checked !== 0;
+  return checked > 0;
 }
 function checkCardInforIsANumber (cardInfor) {
   return !isNaN(cardInfor)
@@ -122,60 +122,113 @@ function checkCardNum (cardNum) {
   return /^[0-9]{13,16}$/.test(cardNum)
 }
 function checkZip (cardZip) {
-  return /$[0-9]{5}^/.test(cardZip)
+  return /^[0-9]{5}$/.test(cardZip)
 }
 function checkCvv (cardCvv) {
-  return /$[0-9]{3}^/.test(cardCvv)
+  return /^[0-9]{3}$/.test(cardCvv)
 }
+//---------------------------------------------
+const $emptyMessage = $('<p></p>');
+$emptyMessage.html('This feild may not be blank')
 
-// $("[type='text'], [type='email']").on('focusout', function(e){
-//   const $input = $(event.target).val()
-//   if (checkEmptyInput($input)) {
-//
-//   }else
-// })
-//
-// $('#mail').on('keyup', function(e){
-//   const $email = $(event.target).val()
-//   if (checkValidEmail($email)) {
-//
-//   }else {
-//
-//   }
-// })
-//
-// $('.credit-card input').on('keyup', function(e){
-//   const $cardInfor = $(event.target).val()
-//   if (checkCardInforIsANumber ($cardInfor)) {
-//
-//   }else {
-//
-//   }
-// })
-//
-// $('#cc-num').on('keyup', function(e){
-//   const $cardNum = $(event.target).val()
-//   if (checkCardNum($cardNum)) {
-//
-//   }else {
-//
-//   }
-// })
-//
-// $('#zip').on('keyup', function(e){
-//   const $zip = $(event.target).val()
-//   if (checkZip($zip) {
-//
-//   }else {
-//
-//   }
-// })
-//
-// $('#cvv').on('keyup', function(e){
-//   const $cvv = $(event.target).val()
-//   if (checkCvv($cvv)) {
-//
-//   }else {
-//
-//   }
+const $emailFormatMessage = $('<p></p>');
+$emailFormatMessage.html('Please enter correct fommated emaiL. For example: <strong>dave@teamtreehouse.com</strong>.')
+
+const $NaNMessage =$('<p></p>');
+$NaNMessage.html('This feild accpect number only')
+
+const $cardNumMessage = $('<p></p>');
+$cardNumMessage.html('A 13 to 16-digit credit card number')
+
+const $zipMessage = $('<p></p>');
+$zipMessage.html('A 5-digit zip code')
+
+const $cvvMessage = $('<p></p>');
+$cvvMessage.html('3-number CVV value.')
+
+$("[type='text'], [type='email']").on('focusout', function(e){
+  // $('span').hide()
+  const $input = $(event.target).val()
+  $emptyMessage.insertAfter(event.target)
+  if (checkEmptyInput($input)) {
+    $emptyMessage.hide()
+  }else{
+    $('span').hide()
+    $emptyMessage.show()
+  }
+})
+
+
+$('#mail').on('keyup', function(e){
+  const $email = $(event.target).val()
+  $emailFormatMessage.insertAfter(event.target)
+  if (checkValidEmail($email)) {
+    $emailFormatMessage.hide()
+  }else {
+    $('p').hide()
+    $emailFormatMessage.show()
+  }
+})
+
+
+$('#cc-num').on('keyup', function(e){
+  const $cardInfor = $(event.target).val()
+  $NaNMessage.insertAfter(event.target)
+  if (checkCardInforIsANumber ($cardInfor)) {
+    $NaNMessage.hide()
+    const $cardNum = $(event.target).val()
+    $cardNumMessage.insertAfter(event.target)
+    if (checkCardNum($cardNum)) {
+      $cardNumMessage.hide()
+    }else {
+      $('p').hide()
+      $cardNumMessage.show()
+    }
+  }else {
+    $('p').hide()
+    $NaNMessage.show()
+  }
+})
+
+$('#zip').on('keyup', function(e){
+  const $cardInfor = $(event.target).val()
+  $NaNMessage.insertAfter(event.target)
+  if (checkCardInforIsANumber ($cardInfor)) {
+    $NaNMessage.hide()
+    const $zip = $(event.target).val()
+    $zipMessage.insertAfter(event.target)
+    if (checkZip($zip)) {
+      $zipMessage.hide()
+    }else {
+      $('p').hide()
+      $zipMessage.show()
+    }
+  }else {
+    $('p').hide()
+    $NaNMessage.show()
+  }
+})
+
+$('#cvv').on('keyup', function(e){
+  const $cardInfor = $(event.target).val()
+  $NaNMessage.insertAfter(event.target)
+  if (checkCardInforIsANumber ($cardInfor)) {
+    $NaNMessage.hide()
+    const $cvv = $(event.target).val()
+    $cvvMessage.insertAfter(event.target)
+    if (checkCvv($cvv)) {
+      $cvvMessage.hide()
+    }else {
+      $('p').hide()
+      $cvvMessage.show()
+    }
+  }else {
+    $('p').hide()
+    $NaNMessage.show()
+  }
+})
+
+// $("[type='text'], [type='email']").trigger('focusout')
+// $('button').on('click', function() {
+//   if ()
 // })
