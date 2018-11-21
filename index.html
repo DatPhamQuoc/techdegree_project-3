@@ -22,9 +22,12 @@
 
         <label for="name">Name:</label>
         <input type="text" id="name" name="user_name">
+        <span style="display: none;" class="blank">This field may not be blank</span>
 
         <label for="mail">Email:</label>
         <input type="email" id="mail" name="user_email">
+        <span style="display: none;" class="blank">This field may not be blank</span>
+        <span style="display: none;" class="checkEmail">Please enter validly formatted e-mail address: <strong>dave@teamtreehouse.com</strong></span>
 
         <label for="title">Job Role</label>
         <select id="title" name="user_title">
@@ -75,6 +78,7 @@
 
       <fieldset class="activities">
         <legend>Register for Activities</legend>
+        <span style="display: none;">At least one checkbox must be selected.</span>
         <label><input type="checkbox" name="all"> Main Conference — $200</label>
         <label><input type="checkbox" name="js-frameworks"> JavaScript Frameworks Workshop — Tuesday 9am-12pm, $100</label>
         <label><input type="checkbox" name="js-libs"> JavaScript Libraries Workshop — Tuesday 1pm-4pm, $100</label>
@@ -100,16 +104,22 @@
           <div class="col-6 col">
             <label for="cc-num">Card Number:</label>
         	  <input id="cc-num" name="user_cc-num" type="text">
+            <p style="display: none;" class="blank">This field may not be blank</p>
+            <p style="display: none;" class="numberOnly"> Please enter 13 to 16-digit credit card number</p>
           </div>
 
           <div class="col-3 col">
             <label for="zip">Zip Code:</label>
             <input id="zip" name="user_zip" type="text">
+            <span style="display: none;" class="blank">This field may not be blank</span>
+            <span style="display: none;" class="numberOnly">Please enter 5-digit zip code</span>
           </div>
 
           <div class="col-3 col">
             <label for="cvv">CVV:</label>
             <input id="cvv" name="user_cvv" type="text">
+            <span style="display: none;" class="blank">This field may not be blank</span>
+            <span style="display: none;" class="numberOnly">Please enter 3-number CVV value</span>
           </div>
 
           <label for="exp-month">Expiration Date:</label>
