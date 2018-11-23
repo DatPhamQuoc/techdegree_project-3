@@ -140,7 +140,7 @@ button:hover {
 ==================================== */
 
 .is-hidden {
-	display: none;
+	color: grey;
 }
 
 .clearfix::after {
@@ -180,6 +180,11 @@ button:hover {
 	}
 }
 
-.disabled {
-  color: grey;
+.redBorder {
+  border-color: #FF4F00;
+}
+
+.error {
+  font-style: italic;
+  margin-top: 0;
 }
