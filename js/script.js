@@ -183,7 +183,7 @@ $('fieldset').eq(3).addClass('information'); // Add class to fieldset of payment
     }
     // Check email format
     function checkValidEmail(email) {
-      return /^[^@]+@[^@.]+\.[a-z]+$/i.test(email);}
+      return /^[^@]+@[^@.]+\.[a-zA-Z]+$/i.test(email);}
     //  Check checked course
     function checkActivities (checked) {
       return checked > 0;
